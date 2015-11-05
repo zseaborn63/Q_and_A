@@ -27,15 +27,18 @@ class Question(Model):
     tags = models.ManyToManyField('Tag', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
+
 class Answer(Model):
     question_answered = models.ForeignKey(Question)
     answerer = models.ForeignKey(User)
     answer = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
+
 class Tag(Model):
     title = models.CharField(max_length=25)
     description = models.TextField(blank=True)
+
 
 class Vote(Model):
     type = models.CharField(max_length=6, choices=[('up', 'Up'), ('down', 'Down')])
