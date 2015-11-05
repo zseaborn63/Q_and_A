@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView, View
 from Q_and_A.models import Question
 
 
@@ -31,3 +31,8 @@ class CreateQuestionView(CreateView):
         model = form.save(commit=False)
         model.asker = self.request.user
         return super().form_valid(form)
+
+
+class QuestionCreation(TemplateView):
+
+    template_name = 'questioncreation.html'
