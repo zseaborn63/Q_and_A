@@ -23,7 +23,7 @@ def user_post_save(sender, **kwargs):
 class Question(Model):
     asker = models.ForeignKey(User)
     title = models.CharField(max_length=200)
-    question = models.TextField()
+    body = models.TextField()
     tags = models.ManyToManyField('Tag', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -31,7 +31,7 @@ class Question(Model):
 class Answer(Model):
     question_answered = models.ForeignKey(Question)
     answerer = models.ForeignKey(User)
-    answer = models.TextField()
+    body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
 
