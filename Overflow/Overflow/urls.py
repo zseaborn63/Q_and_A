@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from Q_and_A.views import WelcomeView, UserCreate, QuestionListView, CreateQuestionView, QuestionCreation
+from Q_and_A.views import WelcomeView, UserCreate, QuestionListView, CreateQuestionView, QuestionDetailView, QuestionCreation
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^create_user/$', UserCreate.as_view(), name='create_user'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^questions/$', QuestionListView.as_view(), name='question_list'),
-    url(r'^create_question/$', QuestionCreation.as_view(), name='create_question')
+    url(r'^create_question/$', QuestionCreation.as_view(), name='create_question'),
+    url(r'^create_question2/$', CreateQuestionView.as_view(), name='create_question'),
+    url(r'questions/(?P<pk>\d+)/$', QuestionDetailView.as_view(), name='question_detail')
 
 ]

@@ -14,7 +14,7 @@
     <br>
     <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">Q&A</a>
+      <a href="{% url 'welcome' %}" class="brand-logo center">Q&A</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="{% url 'question_list' %}">Questions</a></li>
@@ -44,8 +44,10 @@
     </div>
     </nav>
 
-
+    <br>
     {% block content %}
+    {% endblock %}
+    {% block secondary %}
     {% endblock %}
 </div>
 

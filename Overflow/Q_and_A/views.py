@@ -4,7 +4,8 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import TemplateView, CreateView, ListView, View
+
+from django.views.generic import TemplateView, CreateView, ListView, DetailView, View
 from Q_and_A.models import Question
 
 
@@ -21,6 +22,12 @@ class UserCreate(CreateView):
 class QuestionListView(ListView):
     model = Question
 
+class QuestionDetailView(DetailView):
+    model = Question
+
+    def get_queryset(self):
+        question_id = self.kwargs.get("pk")
+        return self.model.objects.filter(id=question_id)
 
 class CreateQuestionView(CreateView):
     model = Question
