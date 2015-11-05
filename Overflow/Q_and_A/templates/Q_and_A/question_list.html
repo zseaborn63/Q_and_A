@@ -5,5 +5,11 @@
 {% endblock %}
 
 {% block content %}
-
+    {% for object in object_list %}
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                {{ object.title }}
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
