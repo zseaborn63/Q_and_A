@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -43,3 +44,12 @@ class CreateQuestionView(CreateView):
 class QuestionCreation(TemplateView):
 
     template_name = 'questioncreation.html'
+
+
+class MakeQuestion(View):
+
+    def post(self, request):
+        title = request.POST.get('title')
+        body = request.POST.get('body')
+        Question.objects.create(asker=request.user, title=title, body=body)
+        return HttpResponseRedirect(reverse('welcome'))
