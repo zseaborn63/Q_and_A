@@ -2,4 +2,4 @@ __pycache__/
 .idea/
 Overflow/.idea/
 db.sqlite3
-
+Overflow/.DS_Store
