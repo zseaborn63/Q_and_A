@@ -42,6 +42,11 @@ class Question(Model):
     tags = models.ManyToManyField('Tag', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def sorted_answers(self):
+        answers = self.answer_set.all()
+        return sorted(answers, key=lambda x: x.answer_score, reverse=True)
+
     def __str__(self):
         return self.title
 
