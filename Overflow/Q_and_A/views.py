@@ -107,3 +107,13 @@ class DownVote(View):
         Vote.objects.create(type='down', voter=request.user, answer_voted=answer)
         return HttpResponseRedirect(reverse('question_detail', kwargs={"pk": answer.question_answered.id}))
 
+class TagListView(ListView):
+    model = Tag
+
+class TagDetailView(DetailView):
+    model = Tag
+
+    def get_queryset(self):
+        tag_id = self.kwargs.get("pk")
+        return self.model.objects.filter(id=tag_id)
+

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ object.title }} Questions
+{% endblock %}
+
+{% block content %}
+    <ul class="collection with-header">
+        <li class="collection-header teal white-text"><h4>All {{ object.title }} Questions</h4></li>
+        {% for question in object.question_set.all %}
+        <li class="collection-item">
+            {{ question.title }}
+            <div class="right">
+                <a href="{% url 'question_detail' question.id %}" class="waves-effect waves-light btn-med">
+                    <i class="small material-icons teal-text">label</i>
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

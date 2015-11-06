@@ -1,20 +1,48 @@
 {% extends 'base.html' %}
 
 {% block title %}
-
+    My Profile
 {% endblock %}
 
 {% block content %}
 <div class="center">
-    <img src="../static/images/profile.jpg">
+    <img src="/static/images/profile.jpg">
 </div>
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card purple lighten-2">
+                <div class="card-content white-text">
+                    <span class="card-title">Question's I've Asked</span>
+                </div>
+          </div>
+        </div>
+    </div>
     <div class="row">
         {% for question in object.user.question_set.all %}
             <div class="col s12 m6 l4">
                 <div class="chip teal">
                     <a href="{% url 'question_detail' question.id %}" class="white-text">{{ question.title }}</a>
-                    <br>
                 </div>
+            <p></p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card blue lighten-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Question's I've Answered</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for answer in object.user.answer_set.all %}
+            <div class="col s12 m6 l4">
+                <div class="chip teal">
+                    <a href="{% url 'question_detail' answer.question_answered.id %}" class="white-text">{{ answer.question_answered.title }}</a>
+                </div>
+            <p></p>
             </div>
         {% endfor %}
     </div>

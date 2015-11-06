@@ -18,8 +18,7 @@ from django.contrib import admin
 
 from django.contrib.auth.decorators import login_required
 from Q_and_A.views import WelcomeView, UserCreate, QuestionListView, CreateQuestionView, QuestionCreation, QuestionDetailView,\
-    MakeQuestion, CreateAnswerView, ProfileDetailView, UpVote, DownVote
-
+    MakeQuestion, CreateAnswerView, ProfileDetailView, UpVote, DownVote, TagListView, TagDetailView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -34,5 +33,7 @@ urlpatterns = [
     url(r'^profile/(?P<pk>\d+)/$', login_required(ProfileDetailView.as_view()), name='user_profile'),
     url(r'^upvote/(?P<answer_id>\d+)/$', UpVote.as_view(), name="upvote"),
     url(r'^downvote/(?P<answer_id>\d+)/$', DownVote.as_view(), name="downvote"),
+    url(r'^tags/$', TagListView.as_view(), name='tag_list'),
+    url(r'^tags/(?P<pk>\d+)/$', TagDetailView.as_view(), name='tag_detail')
 
 ]

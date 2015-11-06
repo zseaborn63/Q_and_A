@@ -18,6 +18,7 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="{% url 'question_list' %}">Questions</a></li>
+        <li><a href="{% url 'tag_list' %}">Tags</a></li>
           {% if request.user.id %}
         <li><a href="{% url 'create_question' %}">Ask a Question</a></li>
           {% endif %}
@@ -33,6 +34,7 @@
       </ul>
         <ul class="side-nav" id="mobile-demo">
         <li><a href="{% url 'question_list' %}">Questions</a></li>
+        <li><a href="{% url 'tag_list' %}">Tags</a></li>
             {% if request.user.id %}
             <li><a href="{% url 'create_question' %}">Ask a Question</a></li>
             <li><a href="{% url 'user_profile' request.user.id %}">Profile</a></li>
