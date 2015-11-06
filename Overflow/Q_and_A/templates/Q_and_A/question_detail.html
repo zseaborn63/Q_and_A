@@ -18,8 +18,8 @@
     <div class="row">
     {% for tag in object.tags.all %}
         <div class="col s12 m6 l3">
-            <div class="chip">
-                {{ tag.title }} <p></p>
+            <div class="chip black">
+                <a href="{% url 'tag_detail' tag.id %}" class="white-text">{{ tag.title }}</a> <p></p>
             </div>
         </div>
     {% endfor %}
