@@ -7,7 +7,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.views.generic import TemplateView, CreateView, ListView, DetailView, View
-from Q_and_A.models import Question, Answer, Tag
+from Q_and_A.models import Question, Answer, Tag, Profile
 
 
 class WelcomeView(TemplateView):
@@ -83,3 +83,9 @@ class CreateAnswerView(CreateView):
         Answer.objects.create(question_answered=question_answered, answerer=request.user, body=body)
         return HttpResponseRedirect(reverse('question_list'))
 
+class ProfileDetailView(DetailView):
+    model = Profile
+
+    def get_queryset(self):
+        user_id = self.kwargs.get("pk")
+        return self.model.objects.filter(user__id=user_id)

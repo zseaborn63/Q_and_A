@@ -27,7 +27,7 @@
         <ul class="collapsible" data-collapsible="accordion">
             {% for answer in object.answer_set.all %}
             <li>
-              <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{ answer.answerer }} says:</div>
+              <div class="collapsible-header active red accent-1 white-text"><i class="material-icons">filter_drama</i>{{ answer.answerer }} says:</div>
               <div class="collapsible-body"><p>{{ answer.body }}</p></div>
             </li>
             {% endfor %}
