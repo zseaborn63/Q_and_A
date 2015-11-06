@@ -11,21 +11,37 @@
         {% csrf_token %}
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Type title here" id="title" name="title" type="text" class="validate">
-          <label for="title">Question Title</label>
+          <input placeholder="Type title here" id="title" name="title" type="text" class="validate" length="200">
+          <label class="active" for="title">Question Title</label>
         </div>
         <div class="col s6">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Type your question here" id="body" name="body" type="text" class="validate">
-          <label for="body">Body of Question</label>
+          <textarea placeholder="Type your question here" id="body" name="body" class="materialize-textarea"></textarea>
+          <label class="active" for="body">Body of Question</label>
         </div>
       </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <label class="active">Select Tags</label>
+
+            {% for tag in tags %}
+                <div>
+                <input type="checkbox" name="tags" id="option{{ tag.id }}" value={{ tag }} />
+                <label for="option{{ tag.id }}">{{ tag }}</label>
+                </div>
+            {% endfor %}
+
+        </div>
+      </div>
+      <br>
+      <div>
         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
         <i class="material-icons right">send</i>
         </button>
+      </div>
     </form>
   </div>
 

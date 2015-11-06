@@ -27,6 +27,9 @@ class Question(Model):
     tags = models.ManyToManyField('Tag', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Answer(Model):
     question_answered = models.ForeignKey(Question)
@@ -34,10 +37,16 @@ class Answer(Model):
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.question_answered_title
+
 
 class Tag(Model):
     title = models.CharField(max_length=25)
     description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Vote(Model):
