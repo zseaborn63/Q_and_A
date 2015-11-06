@@ -59,7 +59,6 @@ class MakeQuestion(View):
         title = request.POST.get('title')
         body = request.POST.get('body')
         tags = request.POST.getlist('tags')
-        print(tags)
         question = Question.objects.create(asker=request.user, title=title, body=body)
         for tag in tags:
             question.tags.add(tag)
