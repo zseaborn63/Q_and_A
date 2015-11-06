@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 
 {% block title %}
-
+{{ object.title }}
 {% endblock %}
 
 {% block content %}
-    <h1>it worked</h1>
+    <br>
+    <div class="card-panel teal">
+      <span class="white-text">
+          <h2>{{ object.title }}</h2>
+          <h4>{{ object.body }}</h4>
+      </span>
+    </div>
+    {% for answer in object.answer_set.all %}
+    {% endfor %}
 {% endblock %}
 {% block secondary %}
 {% endblock %}
