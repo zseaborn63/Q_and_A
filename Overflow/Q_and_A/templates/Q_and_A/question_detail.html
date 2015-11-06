@@ -13,6 +13,17 @@
       </span>
     </div>
     <a href="{% url 'create_answer' object.id %}" class="waves-effect waves-light btn">Submit Answer</a>
+    <br>
+    <br>
+    <div class="row">
+    {% for tag in object.tags.all %}
+        <div class="col s12 m6 l3">
+            <div class="chip">
+                {{ tag.title }} <p></p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
         <ul class="collapsible" data-collapsible="accordion">
             {% for answer in object.answer_set.all %}
             <li>
