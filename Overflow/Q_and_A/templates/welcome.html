@@ -5,12 +5,30 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Welcome to Q&A</h1>
-    <h4>We are the premier question and answer site on the web!</h4>
-    <h4>What we offer:</h4>
-    <ul>
-        <li>The ability to ask questions to anyone willing to read them</li>
-        <li>The ability to answer any questions other users have asked</li>
-        <li>The ability to vote answers up or down based on their accuracy</li>
-    </ul>
+    <br>
+    <div class="row">
+        <div class="col s12 m7">
+          <div class="card teal">
+            <div class="card-title white-text">
+              <span>Welcome to Q&A!</span>
+            </div>
+            <div class="card-content white-text">
+              <p>We are the premier question and answer service on the web!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col m3">
+            <img src="../static/images/Logo.jpg">
+        </div>
+      </div>
+    <br>
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>What we offer:</h4></li>
+        <li class="collection-item">The ability to ask questions to anyone willing to read them</li>
+        <li class="collection-item">The ability to answer any questions other users have asked</li>
+        <li class="collection-item">The ability to vote answers up or down based on their accuracy</li>
+      </ul>
+    <br>
+
+
 {% endblock %}
