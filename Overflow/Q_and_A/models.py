@@ -38,7 +38,25 @@ class Answer(Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.question_answered_title
+        return self.question_answered.title
+
+    @property
+    def voters(self):
+        return [vote.voter for vote in self.vote_set.all()]
+
+    @property
+    def upvotes(self):
+        return self.vote_set.filter(type='up').count()
+
+    @property
+    def downvotes(self):
+        return self.vote_set.filter(type='down').count()
+
+    @property
+    def score(self):
+        upscore = self.upvotes * 10
+        downscore = self.downvotes * -5
+        return upscore + downscore
 
 
 class Tag(Model):
