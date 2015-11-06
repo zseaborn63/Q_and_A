@@ -28,7 +28,8 @@
             {% for answer in object.answer_set.all %}
             <li>
               <div class="collapsible-header active red accent-1 white-text"><i class="material-icons">filter_drama</i><div class="row"><div class="col s5 m5 l5" align="left">{{ answer.answerer }} says: </div>
-              <div class="col s2 m3 l5" align="right">Upvotes: {{ answer.upvotes }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Downvotes: {{ answer.downvotes }} </div></div>
+              <div class="col s2 m3 l5" align="right">Thumbs Up: {{ answer.upvotes }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thumbs Down: {{ answer.downvotes }}</div>
+              </div>
               </div>
               <div class="collapsible-body"><ul><li><p>{{ answer.body }}</p></li></ul>
               {% if request.user not in answer.voters %}

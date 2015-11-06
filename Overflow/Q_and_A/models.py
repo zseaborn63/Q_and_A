@@ -11,6 +11,21 @@ class Profile(Model):
     user = models.OneToOneField(User)
     email = models.EmailField(blank=True)
 
+    @property
+    def question_count(self):
+        return self.user.question_set.all().count()
+
+    @property
+    def score(self):
+        answer_scores = [self.question_count * 5]
+        answers = self.user.answer_set.all()
+        for answer in answers:
+            answer_scores.append(answer.user_score)
+        downvotes = Vote.objects.filter(voter=self.user, type='down')
+        for downvote in downvotes:
+            answer_scores.append(-1)
+        return sum(answer_scores)
+
 
 @receiver(post_save, sender=User)
 def user_post_save(sender, **kwargs):
@@ -53,7 +68,11 @@ class Answer(Model):
         return self.vote_set.filter(type='down').count()
 
     @property
-    def score(self):
+    def answer_score(self):
+        return self.upvotes - self.downvotes
+
+    @property
+    def user_score(self):
         upscore = self.upvotes * 10
         downscore = self.downvotes * -5
         return upscore + downscore
