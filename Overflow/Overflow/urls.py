@@ -18,8 +18,7 @@ from django.contrib import admin
 
 from django.contrib.auth.decorators import login_required
 from Q_and_A.views import WelcomeView, UserCreate, QuestionListView, CreateQuestionView, QuestionCreation, QuestionDetailView,\
-    MakeQuestion
-
+    MakeQuestion, CreateAnswerView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -30,5 +29,6 @@ urlpatterns = [
     url(r'questions/(?P<pk>\d+)/$', QuestionDetailView.as_view(), name='question_detail'),
     url(r'^create_question/$', login_required(QuestionCreation.as_view()), name='create_question'),
     url(r'^make_question/$', login_required(MakeQuestion.as_view()), name='make_question'),
+    url(r'^make_answer/(?P<pk>\d+)/$', login_required(CreateAnswerView.as_view()), name='create_answer'),
 
 ]

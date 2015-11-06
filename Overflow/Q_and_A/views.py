@@ -7,7 +7,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.views.generic import TemplateView, CreateView, ListView, DetailView, View
-from Q_and_A.models import Question
+from Q_and_A.models import Question, Answer
 
 
 class WelcomeView(TemplateView):
@@ -53,3 +53,20 @@ class MakeQuestion(View):
         body = request.POST.get('body')
         Question.objects.create(asker=request.user, title=title, body=body)
         return HttpResponseRedirect(reverse('welcome'))
+
+class CreateAnswerView(CreateView):
+    model = Answer
+    fields = ['body']
+    success_url = '/questions/'
+
+    #def form_valid(self, form,):
+    #    model = form.save(commit=False)
+    #    model.answerer = self.request.user
+    #    model.question_answered = Question.objects.get(id="pk")
+    #    return super().form_valid(form)
+
+    def post(self, request, pk):
+        question_answered = Question.objects.get(id=pk)
+        body = request.POST.get('body')
+        Answer.objects.create(question_answered=question_answered, answerer=request.user, body=body)
+        return HttpResponseRedirect(reverse('question_list'))
