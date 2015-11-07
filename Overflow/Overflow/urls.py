@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^create_user/$', UserCreate.as_view(), name='create_user'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^questions/$', QuestionListView.as_view(), name='question_list'),
-    url(r'questions/(?P<pk>\d+)/$', QuestionDetailView.as_view(), name='question_detail'),
+    url(r'^questions/(?P<pk>\d+)/$', QuestionDetailView.as_view(), name='question_detail'),
     url(r'^create_question/$', login_required(QuestionCreation.as_view()), name='create_question'),
     url(r'^make_question/$', login_required(MakeQuestion.as_view()), name='make_question'),
     url(r'^make_answer/(?P<pk>\d+)/$', login_required(CreateAnswerView.as_view()), name='create_answer'),
