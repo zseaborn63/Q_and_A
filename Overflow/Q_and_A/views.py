@@ -66,6 +66,26 @@ class MakeQuestion(View):
         return HttpResponseRedirect(reverse('question_list'))
 
 
+class AnswerCreation(TemplateView):
+
+    template_name = 'answercreation.html'
+
+    def get_context_data(self, **kwargs):
+        pk = self.kwargs.get("pk")
+        context = super(AnswerCreation, self).get_context_data(**kwargs)
+        context['question'] = Question.objects.get(id=pk)
+        return context
+
+
+class MakeAnswer(View):
+
+    def post(self, request, pk):
+        question = Question.objects.get(id=pk)
+        body = request.POST.get('body')
+        Answer.objects.create(question_answered=question, body=body, answerer=request.user)
+        return HttpResponseRedirect(reverse('question_detail', kwargs={"pk": pk}))
+
+
 class CreateAnswerView(CreateView):
     model = Answer
     fields = ['body']

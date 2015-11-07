@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ question.title }}
+{% endblock %}
+
+{% block content %}
+    <br>
+    <div class="card-panel teal">
+      <span class="white-text">
+          <h2>{{ question.title }}</h2>
+          <h4>{{ question.body }}</h4>
+      </span>
+    </div>
+    <br>
+    <div class="row">
+    {% for tag in question.tags.all %}
+        <div class="col s12 m6 l3">
+            <div class="chip black">
+                <a href="{% url 'tag_detail' tag.id %}" class="white-text">{{ tag.title }}</a> <p></p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <br>
+    <div class="row">
+    <form class="col s12" action="{% url 'make_answer' question.id %}" method="post">
+        {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea placeholder="Type your answer here" id="body" name="body" class="materialize-textarea" required></textarea>
+          <label class="active" for="body" style="font-size: 16px">Answer</label>
+        </div>
+      </div>
+      <div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit Answer
+        <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </form>
+    </div>
+
+{% endblock %}
