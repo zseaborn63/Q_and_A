@@ -63,7 +63,7 @@ class MakeQuestion(View):
         for tag in tags:
             question.tags.add(tag)
         question.save()
-        return HttpResponseRedirect(reverse('welcome'))
+        return HttpResponseRedirect(reverse('question_list'))
 
 
 class CreateAnswerView(CreateView):
