@@ -10,7 +10,7 @@ Tag List
         <div class="col s12 m6 l4"></div>
        <div class="center">
            <div class="col s12 m6 l4">
-                <div class="card red accent-1">
+                <div class="card teal">
                     <div class="card-content white-text">
                         <span class="card-title center">All Tags</span>
                     </div>
@@ -24,7 +24,7 @@ Tag List
 <div class="row">
     {% for object in object_list %}
         <div class="col s12 m6 l4">
-            <a href="{% url 'tag_detail'  object.id%}" class="waves-effect waves-light btn">
+            <a href="{% url 'tag_detail'  object.id%}" class="chip">
                 <i class="material-icons left">visibility</i>{{ object.title }}</a>
             <p></p>
         </div>
