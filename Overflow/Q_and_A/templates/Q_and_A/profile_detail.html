@@ -20,8 +20,13 @@
     <div class="row">
         {% for question in object.user.question_set.all %}
             <div class="col s12 m6 l4">
-                <div class="chip teal">
-                    <a href="{% url 'question_detail' question.id %}" class="white-text">{{ question.title }}</a>
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title black-text">
+                            {{ question.title }}
+                        </span>
+                        <a href="{% url 'question_detail' question.id %}"><i class="material-icons teal-text">label</i></a>
+                    </div>
                 </div>
             <p></p>
             </div>
@@ -39,8 +44,15 @@
     <div class="row">
         {% for answer in object.user.answer_set.all %}
             <div class="col s12 m6 l4">
-                <div class="chip teal">
-                    <a href="{% url 'question_detail' answer.question_answered.id %}" class="white-text">{{ answer.question_answered.title }}</a>
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title black-text">
+                            {{ answer.question_answered.title }}
+                        </span>
+                        <a href="{% url 'question_detail' answer.question_answered.id %}" class="white-text">
+                            <i class="material-icons teal-text">label</i>
+                        </a>
+                    </div>
                 </div>
             <p></p>
             </div>
