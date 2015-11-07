@@ -33,8 +33,8 @@ urlpatterns = [
     url(r'^create_answer/(?P<pk>\d+)/$', login_required(AnswerCreation.as_view()), name='create_answer'),
     url(r'^make_answer/(?P<pk>\d+)/$', login_required(MakeAnswer.as_view()), name='make_answer'),
     url(r'^profile/(?P<pk>\d+)/$', login_required(ProfileDetailView.as_view()), name='user_profile'),
-    url(r'^upvote/(?P<answer_id>\d+)/$', UpVote.as_view(), name="upvote"),
-    url(r'^downvote/(?P<answer_id>\d+)/$', DownVote.as_view(), name="downvote"),
+    url(r'^upvote/(?P<answer_id>\d+)/$', login_required(UpVote.as_view()), name="upvote"),
+    url(r'^downvote/(?P<answer_id>\d+)/$', login_required(DownVote.as_view()), name="downvote"),
     url(r'^tags/$', TagListView.as_view(), name='tag_list'),
     url(r'^tags/(?P<pk>\d+)/$', TagDetailView.as_view(), name='tag_detail'),
 
