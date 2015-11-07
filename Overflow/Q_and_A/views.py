@@ -86,10 +86,10 @@ class MakeAnswer(View):
         return HttpResponseRedirect(reverse('question_detail', kwargs={"pk": pk}))
 
 
-class CreateAnswerView(CreateView):
-    model = Answer
-    fields = ['body']
-    success_url = '/questions/'
+#class CreateAnswerView(CreateView):
+#    model = Answer
+#    fields = ['body']
+#    success_url = '/questions/'
 
     #def form_valid(self, form,):
     #    model = form.save(commit=False)
@@ -97,11 +97,11 @@ class CreateAnswerView(CreateView):
     #    model.question_answered = Question.objects.get(id="pk")
     #    return super().form_valid(form)
 
-    def post(self, request, pk):
-        question_answered = Question.objects.get(id=pk)
-        body = request.POST.get('body')
-        Answer.objects.create(question_answered=question_answered, answerer=request.user, body=body)
-        return HttpResponseRedirect(reverse('question_list'))
+#    def post(self, request, pk):
+#        question_answered = Question.objects.get(id=pk)
+#        body = request.POST.get('body')
+#        Answer.objects.create(question_answered=question_answered, answerer=request.user, body=body)
+#        return HttpResponseRedirect(reverse('question_list'))
 
 
 class ProfileDetailView(DetailView):
@@ -138,4 +138,3 @@ class TagDetailView(DetailView):
     def get_queryset(self):
         tag_id = self.kwargs.get("pk")
         return self.model.objects.filter(id=tag_id)
-

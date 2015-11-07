@@ -32,29 +32,31 @@
               </div>
               </div>
               <div class="collapsible-body"><ul><li><p>{{ answer.body }}</p></li></ul>
-              {% if request.user not in answer.voters and request.user != answer.answerer %}
-              <div class="row">
-              <div class="col s2 m2 l2">
-                  <div class="input-field" align="right">
-                  <form action="{% url 'upvote' answer.id %}" method="post">
-                  {% csrf_token %}
-                  <button class="btn-floating btn-medium waves-effect waves-teal" type="submit"><i class="material-icons">thumb_up</i>
-                  </button>
-                  </form>
-                      </div>
+              {% if request.user.id %}
+                {% if request.user not in answer.voters and request.user != answer.answerer %}
+                <div class="row">
+                <div class="col s2 m2 l2">
+                    <div class="input-field" align="right">
+                        <form action="{% url 'upvote' answer.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn-floating btn-medium waves-effect waves-teal" type="submit"><i class="material-icons">thumb_up</i>
+                        </button>
+                        </form>
                     </div>
+                </div>
 
-                    <div class="col s3">
-                        <div class="input-field">
-                  <form class="col s2 m2 l2" action="{% url 'downvote' answer.id %}" method="post">
-                  {% csrf_token %}
-                  <button class="btn-floating btn-medium waves-effect waves-light red" type="submit"><i class="material-icons">thumb_down</i>
-                  </button>
-                  </form>
-                    </div>
-                    </div>
+                <div class="col s3">
+                  <div class="input-field">
+                    <form class="col s2 m2 l2" action="{% url 'downvote' answer.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn-floating btn-medium waves-effect waves-light red" type="submit"><i class="material-icons">thumb_down</i>
+                    </button>
+                    </form>
                   </div>
+                </div>
+                </div>
                 {% endif %}
+              {% endif %}
               </div>
             </li>
             {% endfor %}

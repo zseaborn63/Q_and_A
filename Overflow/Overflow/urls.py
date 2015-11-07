@@ -17,8 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from django.contrib.auth.decorators import login_required
-from Q_and_A.views import WelcomeView, UserCreate, QuestionListView, CreateQuestionView, QuestionCreation, QuestionDetailView,\
-    MakeQuestion, CreateAnswerView, ProfileDetailView, UpVote, DownVote, TagListView, TagDetailView, MakeAnswer, \
+from Q_and_A.views import WelcomeView, UserCreate, QuestionListView, QuestionCreation, QuestionDetailView,\
+    MakeQuestion, ProfileDetailView, UpVote, DownVote, TagListView, TagDetailView, MakeAnswer, \
     AnswerCreation
 
 urlpatterns = [
