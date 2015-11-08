@@ -13,6 +13,8 @@
             <div class="card teal lighten-2">
                 <div class="card-content white-text">
                     <span class="card-title">My Total Score: {{ object.score }}</span>
+                    <p># of questions asked:  {{ object.user.question_set.count }}</p>
+                    <p># of questions answered: {{ object.user.answer_set.count }}</p>
                 </div>
           </div>
         </div>

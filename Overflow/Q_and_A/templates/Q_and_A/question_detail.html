@@ -12,7 +12,9 @@
           <h4>{{ object.body }}</h4>
       </span>
     </div>
+    {% if request.user != object.asker %}
     <a href="{% url 'create_answer' object.id %}" class="waves-effect waves-light btn">Answer This Question</a>
+    {% endif %}
     <br>
     <br>
     <div class="row">
